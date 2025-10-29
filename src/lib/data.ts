@@ -17,7 +17,7 @@ let books: Book[] = [
         author: 'Chetan Bhagat',
         description: 'Well written and entertaining',
         reviews: [
-            { id: 'r3', rating: 5, comment: 'Changed how I code.' }
+            { id: 'r3', rating: 5, comment: 'Lovely.' }
         ]
     }
 ];
@@ -25,7 +25,6 @@ let books: Book[] = [
 export const getBooks = (): Book[] => books;
 
 export const getBookById = (id: string): Book | undefined => books.find(book => book.id === id);
-
 export const addReview = (bookId: string, review: Review): Review | null => {
     const book = books.find(book => book.id === bookId);
     if (!book) return null;

@@ -33,6 +33,8 @@ const ReviewForm = ({ bookId }: ReviewFormProps) => {
             if (!res.ok) throw data;
             setComment('');
             setRating(5);
+
+            router.refresh()
         } catch (err: any) {
             setError(err?.message || 'Failed to submit');
         } finally {
@@ -55,9 +57,10 @@ const ReviewForm = ({ bookId }: ReviewFormProps) => {
                 </label>
 
                 {error && <p className="text-sm text-red-600">{error}</p>}
-
-                <Button type="submit" disabled={loading}>{loading ? 'Submitting...' : 'Add Review'}</Button>
-                <Button onClick={() => router.back()} >Go Back</Button>
+                <div className="flex space-x-3">
+                    <Button type="submit" disabled={loading}>{loading ? 'Submitting...' : 'Add Review'}</Button>
+                    <Button onClick={() => router.back()} >Go Back</Button>
+                </div>
             </form>
         </>
     );
